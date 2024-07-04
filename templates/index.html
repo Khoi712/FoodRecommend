@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Flask App</title>
+    <style>
+        body {
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/static/background.jpg');
+            color: #ffffff; /* Font color for body text */
+        }
+
+        header {
+            text-align: center;
+            color: #ffffff; /* Font color for header text */
+        }
+        header h1 {
+            font-size: 42px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0.5, 1); /* Darker text shadow */
+            text-border: 2px solid #000000; /* Black border for the text */
+            padding: 5px; /* Add padding to give some space around the text */
+        }
+        nav {
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: #007bff; /* Font color for navigation links */
+            font-size: 26px; /* Adjust the font size for navigation links */
+        }
+
+        main {
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff; /* Font color for main content text */
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #ffffff; /* Font color for footer text */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to recommend food</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Home Page</h2>
+        </section>
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>

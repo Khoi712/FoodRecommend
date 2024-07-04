@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggested Food</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/static/background.jpg');
+            color: #fff; /* Text color */
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #333; /* Text color on table */
+        }
+        
+        th, td {
+            border: 1px solid #ced4da;
+            padding: 10px;
+            text-align: left;
+            background-color: #fff; /* Light background color for table cells */
+        }
+        
+        th {
+            background-color: #007bff; /* Màu đường dẫn */
+            color: white;
+        }
+        
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50; /* Màu của nút chọn */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        strong {
+            color: #343a40; /* Màu chữ đậm */
+        }
+        
+        .return a {
+            color: #007bff; /* Màu đường dẫn for return links */
+        }
+        
+        .return a:hover {
+            text-decoration: underline; /* Underline on hover for return links */
+        }
+    </style>
+</head>
+<body>
+    <h1>Suggested Food</h1>
+
+    <table id="foodTable">
+        <thead>
+            <tr>
+                <th>Store ID</th>
+                <th>Store Name</th>
+                <th>Rating</th>
+                <th>Food Name</th>
+                <th>Price</th>
+                <th>Calo</th>
+                <th>Discount Percent</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in suggested_food.iterrows() %}
+                <tr>
+                    <td>{{ row['store_id'] }}</td>
+                    <td>{{ row['name'] }}</td>
+                    <td>{{ row['rating'] }}</td>
+                    <td>{{ row['food_name'] }}</td>
+                    <td>{{ row['price'] }}</td>
+                    <td>{{ row['calo'] }}</td>
+                    <td>{{ row['discount_percent'] }}</td>
+                    <td>
+                        <button onclick="selectRow('{{ row['name'] }}', '{{ row['food_name'] }}', '{{ row['price'] }}', '{{ row['calo'] }}')">Select</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="return">Return to <a href="{{ url_for('index') }}">Home</a></p>
+    <p class="return"> <a href="{{ url_for('order_food') }}">Quay lại</a></p>
+    <script>
+        $(document).ready(function() {
+            $('#foodTable').DataTable();
+        });
+        function selectRow(name, food_name, price, calo) {
+            // Thực hiện hành động khi chọn một dòng, ví dụ: hiển thị alert
+            alert(`Selected:\nStore Name: ${name}\nFood Name: ${food_name}\nPrice: ${price}\nCalories: ${calo}`);
+        }
+    </script>
+</body>
+</html>

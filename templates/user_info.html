@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information - Your Flask App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/background.jpg'); /* Đường dẫn đến hình ảnh nền */
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #ffffff; /* Màu chữ trắng để tăng độ đọc được trên nền đen */
+        }
+
+        .card {
+            width: 400px;
+            text-align: left;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Màu nền của card với độ trong suốt */
+            padding: 20px;
+            border-radius: 10px; /* Độ cong viền của card */
+            border: 1px solid #ffffff; /* Viền trắng cho card */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .return{
+            margin-top: 20px
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Information</h1>
+    </header>
+
+    <div class="card">
+        <div class="card-header">
+            <strong>User Details</strong>
+        </div>
+        <div class="card-body">
+            <p><strong>User ID:</strong> {{ user_info['id'].values[0] }}</p>
+            <p><strong>Favorite:</strong> {{ user_info['favorite'].values[0]}}</p>
+            <p><strong>Weight:</strong> {{ user_info['weight'].values[0] }} kg</p>
+            <p><strong>Age:</strong> {{ user_info['age'].values[0] }} years</p>
+            <p><strong>Height:</strong> {{ user_info['height'].values[0] }} cm</p>
+            <p><strong>Gender:</strong> {{ user_info['gender'].values[0] }}</p>
+            <p><strong>Body Fat:</strong> {{ user_info['body fat'].values[0] }}</p>
+        </div>
+    </div>
+
+    <p class = "return"> Hôm nay bạn muốn ăn gì? <a href="{{ url_for('order_food') }}">Đặt ngay</a></p>
+
+    <p class="return">Return to <a href="{{ url_for('index') }}">Home</a></p>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

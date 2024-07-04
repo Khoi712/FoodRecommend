@@ -1,0 +1,4 @@
+Flask
+unidecode
+pandas
+numpy
